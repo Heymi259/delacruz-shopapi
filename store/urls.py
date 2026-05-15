@@ -10,6 +10,7 @@ from store.views.category  import CategoryViewSet
 from store.views.product   import ProductViewSet
 from store.views.order     import OrderViewSet
 from store.serializers.auth import CustomTokenView
+from store.views.health import health_check, testing_cicd
 
 router = DefaultRouter()
 router.register('users',      UserViewSet,     basename='user')
@@ -19,6 +20,7 @@ router.register('orders',     OrderViewSet,    basename='order')
 
 urlpatterns = [
     path('health/',             health_check),
+    path('testing/',            testing_cicd),
     path('auth/register/',      RegisterView.as_view()),
     path('auth/login/',         CustomTokenView.as_view()),
     path('auth/token/refresh/', TokenRefreshView.as_view()),
